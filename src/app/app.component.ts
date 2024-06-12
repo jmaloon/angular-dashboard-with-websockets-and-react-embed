@@ -1,11 +1,7 @@
-import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 import { map, scan, tap } from "rxjs/operators";
 import { DataService } from "./data.service";
-
-type Message = { type: string; timeStamp: number; data: string };
-type Row = { name: string; q1: number; q2: number; q3: number; q4: number };
+import { Column, Message, Row } from "./types";
 
 function getRandom() {
   return Math.floor(Math.random() * 89000 + 10000);
@@ -22,8 +18,6 @@ function createRow(name: string) {
 
 @Component({
   selector: "app-root",
-  standalone: true,
-  imports: [RouterOutlet, CommonModule],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
 })
@@ -35,7 +29,7 @@ export class AppComponent {
     createRow("Michael Scott"),
     createRow("Jim Halpert"),
   ];
-  public columnData: Array<{ name: string; selector: (x: Row) => any }> = [
+  public columnData: Column[] = [
     { name: "Name", selector: (row) => row.name },
     { name: "Q1", selector: (row) => row.q1 },
     { name: "Q2", selector: (row) => row.q2 },
