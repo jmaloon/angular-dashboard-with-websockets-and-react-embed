@@ -8,6 +8,27 @@
   <p>Messages exist!</p>
   }
   <button (click)="send()">Send message</button>
+
+  <table>
+    <thead>
+      <tr>
+        @for (col of columnData; track col.name) {
+        <td>{{ col.name }}</td>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rowData; track row.name) {
+      <tr>
+        @for (col of columnData; track col.name) { @if (col.name === 'Name') {
+        <td>{{ row.name }}</td>
+        } @else {
+        <td>{{ col.selector(row) | number : "1.0-0" }}</td>
+        } }
+      </tr>
+      }
+    </tbody>
+  </table>
 </main>
 
 <router-outlet />
