@@ -4,10 +4,6 @@
     This app is built with Angular and embeds a React datatable. Data is derived
     from asynchronous websocket messages.
   </p>
-  @if (messages$ | async) {
-  <p>Messages exist!</p>
-  }
-  <button (click)="send()">Send message</button>
 
   <table>
     <thead>
