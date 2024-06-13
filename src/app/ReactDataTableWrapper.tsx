@@ -20,6 +20,7 @@ const rootElementName = "reactDataTableRoot";
   selector: "react-data-table",
   template: `<div #${rootElementName}></div>`,
   encapsulation: ViewEncapsulation.None,
+  styleUrl: "./react.css",
 })
 export class ReactDataTableWrapper
   implements OnChanges, OnDestroy, AfterViewInit
@@ -28,9 +29,8 @@ export class ReactDataTableWrapper
   @ViewChild(rootElementName, { static: false }) rootRef: ElementRef;
 
   @Input() public columnData: Column[] = [];
-  @Input() public rowData: Row[] = [];
+  @Input() public rowData: Row[] | null = [];
 
-  //   ngOnChanges(changes: SimpleChanges): void {
   ngOnChanges(): void {
     this.render();
   }

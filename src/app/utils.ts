@@ -1,3 +1,5 @@
+import { Row } from "./types";
+
 export const NAMES = [
   "Dwight Schrute",
   "Jim Halpert",
@@ -15,7 +17,7 @@ export function getRandomQuarterlySalesFigure() {
   return Math.floor(Math.random() * 89000) + 10000;
 }
 
-export function createRow(name: Name) {
+export function createRow(name: Name): Row {
   return {
     name,
     q1: getRandomQuarterlySalesFigure(),

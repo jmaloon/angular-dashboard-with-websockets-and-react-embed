@@ -1,5 +1,3 @@
-export type Message = { type: string; timeStamp: number; data: string };
-
 export type Row = {
   name: string;
   q1: number;

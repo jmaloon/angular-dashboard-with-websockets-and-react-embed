@@ -1,0 +1,19 @@
+/* .main {
+  max-width: 800px;
+  display: grid;
+  place-items: center;
+} */
+.container {
+  /* max-width: 800px; */
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: 100%;
+  padding: 24px 16px;
+  background-color: white;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 4px -2px #333333;
+  box-shadow: 4px 4px 4px -2px #333333;
+}

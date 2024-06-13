@@ -1,15 +1,14 @@
-import { Column, Row } from "./types";
-
 import React from "react";
+import { Column, Row } from "./types";
 
 type ReactDataTableProps = {
   columns: Column[];
-  rows: Row[];
+  rows: Row[] | null;
 };
 
 export default function ReactDataTable({ columns, rows }: ReactDataTableProps) {
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           {columns.map((column) => (
@@ -17,15 +16,17 @@ export default function ReactDataTable({ columns, rows }: ReactDataTableProps) {
           ))}
         </tr>
       </thead>
-      <tbody>
-        {rows.map((row) => (
-          <tr key={row.name}>
-            {columns.map((column) => (
-              <td key={column.name}>{column.selector(row)}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
+      {rows && (
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.name}>
+              {columns.map((column) => (
+                <td key={column.name}>{column.selector(row)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      )}
     </table>
   );
 }

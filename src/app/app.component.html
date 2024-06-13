@@ -1,30 +1,13 @@
 <main>
-  <h1>Hi, user!</h1>
-  <p>
-    This app is built with Angular and embeds a React datatable. Data is derived
-    from asynchronous websocket messages.
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        @for (col of columnData; track col.name) {
-        <td>{{ col.name }}</td>
-        }
-      </tr>
-    </thead>
-    <tbody>
-      @for (row of rowData; track row.name) {
-      <tr>
-        @for (col of columnData; track col.name) { @if (col.name === 'Name') {
-        <td>{{ row.name }}</td>
-        } @else {
-        <td>{{ col.selector(row) | number : "1.0-0" }}</td>
-        } }
-      </tr>
-      }
-    </tbody>
-  </table>
-
-  <react-data-table [rowData]="rowData" [columnData]="columnData" />
+  <div class="container">
+    <article class="card">
+      <p>Total Sales:</p>
+      ${{ allSales$ | async | number : "1.0-0" }}
+    </article>
+    <article class="card">
+      <p>Top performer:</p>
+      {{ topSalesman$ | async }}
+    </article>
+    <react-data-table [rowData]="rowData$ | async" [columnData]="columnData" />
+  </div>
 </main>

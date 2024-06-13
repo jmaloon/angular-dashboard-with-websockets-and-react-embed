@@ -21,15 +21,10 @@ export class DataService {
       const number = getRandomQuarterlySalesFigure();
       const quarter = 1 + Math.floor(Math.random() * 4);
       this.socket$.next({ name, [`q${quarter}`]: number } as unknown as any);
-      // console.log("here");
     });
   }
 
   getData() {
     return this.socket$.asObservable();
-  }
-
-  sendMessage() {
-    this.socket$.next("sdlkfjskdl" as unknown as any);
   }
 }
