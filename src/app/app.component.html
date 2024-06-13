@@ -1,13 +1,20 @@
-<main>
+<main class="main">
   <div class="container">
-    <article class="card">
-      <p>Total Sales:</p>
-      ${{ allSales$ | async | number : "1.0-0" }}
-    </article>
-    <article class="card">
-      <p>Top performer:</p>
-      {{ topSalesman$ | async }}
-    </article>
-    <react-data-table [rowData]="rowData$ | async" [columnData]="columnData" />
+    <div class="cards">
+      <article class="card card-article">
+        <h6 class="card-header">Top performer:</h6>
+        <p class="card-body">{{ topSalesman$ | async }}</p>
+      </article>
+      <article class="card card-article">
+        <h6 class="card-header">Total Sales:</h6>
+        <p class="card-body">${{ allSales$ | async | number : "1.0-0" }}</p>
+      </article>
+    </div>
+    <div class="card">
+      <react-data-table
+        [rowData]="rowData$ | async"
+        [columnData]="columnData"
+      />
+    </div>
   </div>
 </main>

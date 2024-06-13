@@ -12,7 +12,9 @@ export default function ReactDataTable({ columns, rows }: ReactDataTableProps) {
       <thead>
         <tr>
           {columns.map((column) => (
-            <th key={column.name}>{column.name}</th>
+            <th key={column.name} scope="col">
+              {column.name}
+            </th>
           ))}
         </tr>
       </thead>
@@ -21,7 +23,9 @@ export default function ReactDataTable({ columns, rows }: ReactDataTableProps) {
           {rows.map((row) => (
             <tr key={row.name}>
               {columns.map((column) => (
-                <td key={column.name}>{column.selector(row)}</td>
+                <td key={column.name} data-label={column.name}>
+                  {column.selector(row)}
+                </td>
               ))}
             </tr>
           ))}
