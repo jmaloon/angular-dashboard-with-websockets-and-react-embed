@@ -11,7 +11,7 @@ import {
 import * as React from "react";
 import { Root, createRoot } from "react-dom/client";
 
-import DataTable from "react-data-table-component";
+import ReactDataTable from "./ReactDataTable";
 import { Column, Row } from "./types";
 
 const rootElementName = "reactDataTableRoot";
@@ -19,7 +19,6 @@ const rootElementName = "reactDataTableRoot";
 @Component({
   selector: "react-data-table",
   template: `<div #${rootElementName}></div>`,
-  //   styleUrls: ["./MyReactComponent.scss"],
   encapsulation: ViewEncapsulation.None,
 })
 export class ReactDataTableWrapper
@@ -49,7 +48,7 @@ export class ReactDataTableWrapper
     if (!this.root) return;
 
     this.root.render(
-      <DataTable columns={this.columnData} data={this.rowData} />
+      <ReactDataTable columns={this.columnData} rows={this.rowData} />
     );
   }
 }
